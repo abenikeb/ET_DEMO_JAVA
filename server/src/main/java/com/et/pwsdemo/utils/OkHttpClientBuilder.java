@@ -1,4 +1,4 @@
-package com.huawei.pwsdemo.utils;
+package com.et.pwsdemo.utils;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;

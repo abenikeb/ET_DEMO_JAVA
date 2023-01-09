@@ -1,7 +1,8 @@
-package com.huawei.pwsdemo.utils;
+package com.et.pwsdemo.utils;
 
-import com.huawei.pwsdemo.config.PWSConfig;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import com.et.pwsdemo.config.PWSConfig;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
@@ -32,7 +33,7 @@ public class ToolUtils {
                 map.put(key, val.toString());
             }
         }
-        Map<String, Object> biz = (Map<String, Object>) req.get("biz_content");
+        Map<String, Object> biz = (Map<String, Object>) req.get("biz_content");        
         if (biz != null) {
             for (String key : biz.keySet()) {
                 if (excludes.contains(key)) {

@@ -1,9 +1,9 @@
-package com.huawei.pwsdemo.entity.response;
+package com.et.pwsdemo.entity.response;
 
 import lombok.Data;
 
 @Data
-public class CreateOrderResponse {
+public class ApplyH5TokenResponse {
     String result;
     String code;
     String msg;
@@ -14,7 +14,10 @@ public class CreateOrderResponse {
 
     @Data
     public class BizContent {
-        String merch_order_id;
-        String prepay_id;
+        String access_token;
+        String appid;
+        String merch_entry_url;
+        String registered_time;
+        String status;
     }
 }

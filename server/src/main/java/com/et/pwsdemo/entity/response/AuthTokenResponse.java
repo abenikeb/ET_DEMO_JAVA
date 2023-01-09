@@ -1,4 +1,4 @@
-package com.huawei.pwsdemo.entity.response;
+package com.et.pwsdemo.entity.response;
 
 import lombok.Data;
 

@@ -1,19 +1,20 @@
-package com.huawei.pwsdemo.service;
+package com.et.pwsdemo.service;
 
+import com.et.pwsdemo.config.PWSConfig;
+import com.et.pwsdemo.entity.response.FabricTokenResponse;
+import com.et.pwsdemo.utils.OkHttpClientBuilder;
 import com.google.gson.Gson;
-import com.huawei.pwsdemo.config.PWSConfig;
-import com.huawei.pwsdemo.entity.response.FabricTokenResponse;
-import com.huawei.pwsdemo.utils.OkHttpClientBuilder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
+import static com.et.pwsdemo.utils.OkHttpClientBuilder.JSON;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.huawei.pwsdemo.utils.OkHttpClientBuilder.JSON;
 
 @Service
 public class ApplyFabricTokenService {

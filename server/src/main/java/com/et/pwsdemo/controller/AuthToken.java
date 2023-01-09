@@ -1,12 +1,13 @@
-package com.huawei.pwsdemo.controller;
+package com.et.pwsdemo.controller;
 
+import com.et.pwsdemo.config.PWSConfig;
+import com.et.pwsdemo.entity.request.AuthTokenRequest;
+import com.et.pwsdemo.entity.response.AuthTokenResponse;
+import com.et.pwsdemo.service.ApplyFabricTokenService;
+import com.et.pwsdemo.utils.OkHttpClientBuilder;
+import com.et.pwsdemo.utils.ToolUtils;
 import com.google.gson.Gson;
-import com.huawei.pwsdemo.config.PWSConfig;
-import com.huawei.pwsdemo.entity.request.AuthTokenRequest;
-import com.huawei.pwsdemo.entity.response.AuthTokenResponse;
-import com.huawei.pwsdemo.service.ApplyFabricTokenService;
-import com.huawei.pwsdemo.utils.OkHttpClientBuilder;
-import com.huawei.pwsdemo.utils.ToolUtils;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -17,10 +18,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import static com.et.pwsdemo.utils.OkHttpClientBuilder.JSON;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.huawei.pwsdemo.utils.OkHttpClientBuilder.JSON;
 
 @CrossOrigin
 @Controller

@@ -1,4 +1,4 @@
-const baseUrl = "http://159.138.88.66:8080";
+const baseUrl = "http://localhost:8080";
 const appId = "853694808089602"; // need replace with real appid.
 let h5Token = "";
 let rawRequest = "";
@@ -41,6 +41,7 @@ function authToken() {
     method: "post",
     headers: {
       "Content-Type": "application/json",
+      "mode":"cors"
     },
     body: JSON.stringify({
       authToken: h5Token,
@@ -72,6 +73,7 @@ function createOrder() {
     method: "post",
     headers: {
       "Content-Type": "application/json",
+      "mode":"cors"
     },
     body: JSON.stringify({
       title: title,
@@ -91,6 +93,9 @@ function startPay() {
   if (!rawRequest) {
     alert("rawRequest is null");
     return;
+  }
+  if (!window.customerApp) {
+    alert("This page is not in app!")
   }
   window.xm.native("startPay", { rawRequest, rawRequest }).then((res) => {
     alert("payment success!");
