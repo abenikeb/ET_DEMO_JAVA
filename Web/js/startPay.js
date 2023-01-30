@@ -26,6 +26,7 @@ function startPay() {
   window.handleinitDataCallback = function () {
     window.location.href = window.location.origin;
   };
+  
   if (!price) {
     return;
   }
@@ -55,9 +56,9 @@ function startPay() {
             },
           });
 
-          if (typeof rawRequest === undefined || rawRequest === null) return;
-          if (window.consumerapp === undefined || window.consumerapp === null) {
-            console.log("This is not opened in app!");
+          if (typeof rawRequest === undefined || typeof rawRequest === null) return;
+          if (window.consumerapp === undefined ||window.consumerapp === null) {
+            console.log("This is not opened in Super app!");
             return;
           }
           window.consumerapp.evaluate(obj);
