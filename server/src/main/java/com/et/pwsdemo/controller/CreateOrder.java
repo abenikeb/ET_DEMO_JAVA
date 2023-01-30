@@ -22,8 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.et.pwsdemo.utils.OkHttpClientBuilder.JSON;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
@@ -115,7 +118,9 @@ public class CreateOrder {
         map.put("timestamp", ToolUtils.createTimeStamp());
         String sign = ToolUtils.signRequestBody(map);
         String rawRequest = "";
-        for (String key : map.keySet()) {
+        List<String> mapKey = new ArrayList<>(map.keySet());
+        Collections.sort(mapKey);
+        for (String key : mapKey) {
             rawRequest += key + "=" + map.get(key) + "&";
         }
         rawRequest += "sign=" + sign + "&sign_type=SHA256WithRSA";
