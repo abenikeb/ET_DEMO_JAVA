@@ -111,7 +111,7 @@ public class CreateOrder {
         map.put("appid", PWSConfig.MerchantAppId);
         map.put("merch_code", PWSConfig.MerchantCode);
         map.put("nonce_str", ToolUtils.createNonceStr());
-        map.put("prepay_id", response);
+        map.put("prepay_id", response.getBiz_content().getPrepay_id());
         map.put("timestamp", ToolUtils.createTimeStamp());
         String sign = ToolUtils.signRequestBody(map);
         String rawRequest = "";
