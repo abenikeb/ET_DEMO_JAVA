@@ -22,11 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.et.pwsdemo.utils.OkHttpClientBuilder.JSON;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
@@ -66,7 +63,8 @@ public class CreateOrder {
             System.out.println(response);
             CreateOrderResponse createOrderResponse = new Gson().fromJson(response.body().string(), CreateOrderResponse.class);
             
-            return createRawRequest(createOrderResponse);
+            String var = (createOrderResponse.getBiz_content().getPrepay_id());
+            return createRawRequest(var);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -109,18 +107,16 @@ public class CreateOrder {
         return sdf.format(now) + now.getTime();
     }
 
-    private String createRawRequest(CreateOrderResponse response) {
+    private String createRawRequest(String prepay_id) {
         Map<String, Object> map = new HashMap<>();
         map.put("appid", PWSConfig.MerchantAppId);
         map.put("merch_code", PWSConfig.MerchantCode);
         map.put("nonce_str", ToolUtils.createNonceStr());
-        map.put("prepay_id", response.getBiz_content().getPrepay_id());
+        map.put("prepay_id", prepay_id);
         map.put("timestamp", ToolUtils.createTimeStamp());
         String sign = ToolUtils.signRequestBody(map);
         String rawRequest = "";
-        List<String> mapKey = new ArrayList<>(map.keySet());
-        Collections.sort(mapKey);
-        for (String key : mapKey) {
+        for (String key : map.keySet()) {
             rawRequest += key + "=" + map.get(key) + "&";
         }
         rawRequest += "sign=" + sign + "&sign_type=SHA256WithRSA";
